@@ -1,0 +1,28 @@
+{
+  "name": "q-studio",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "build": "pnpm --filter @qstudio/web build",
+    "engine:build": "node scripts/build-engine.mjs",
+    "tauri": "pnpm --filter @qstudio/desktop tauri",
+    "desktop:dev": "pnpm --filter @qstudio/desktop dev",
+    "desktop:build": "pnpm --filter @qstudio/desktop build",
+    "start": "pnpm --filter @qstudio/server start",
+    "probe": "node scripts/probe.mjs",
+    "test": "node --import tsx --test packages/core/src/*.test.ts apps/server/src/*.test.ts",
+    "typecheck": "pnpm -r typecheck",
+    "verify": "pnpm typecheck && pnpm test && pnpm build"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2",
+    "esbuild": "0.28.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.7.3"
+  }
+}
